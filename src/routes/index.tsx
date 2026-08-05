@@ -5,30 +5,39 @@ import { LetterModal } from "@/components/letter-modal";
 import { Particles } from "@/components/particles";
 
 const PhotoSphere = lazy(() => import("@/components/photo-sphere"));
+const siteUrl = "https://nezer-bday.vercel.app";
+const title = "Letters to Nezer";
+const description = "Leave Nezer something you've always wanted to say. Completely anonymous, no name, no email, no login. Just your words, for one day only.";
+const image = `${siteUrl}/og-image.png`;
 
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Letters to Nezer - Send an anonymous birthday letter" },
+      { title },
       {
         name: "description",
-        content:
-          "Leave Nezer something you've always wanted to say. Completely anonymous, no name, no email, no login. Just your words, for one day only.",
+        content: description,
       },
-      { property: "og:title", content: "Letters to Nezer" },
+      { property: "og:title", content: title },
       {
         property: "og:description",
-        content: "Leave me something you've always wanted to say. Completely anonymous.",
+        content: description,
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: siteUrl },
+      { property: "og:image", content: image },
+      { property: "og:site_name", content: title },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "twitter:title", content: title },
+      { property: "twitter:description", content: description },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "canonical",
-        href: "/",
+        href: siteUrl,
       },
       {
         rel: "icon",
@@ -43,6 +52,8 @@ export const Route = createFileRoute("/")({
           "@type": "WebSite",
           name: "Letters to Nezer",
           description: "Send Nezer a completely anonymous birthday letter.",
+          url: siteUrl,
+          image,
         }),
       },
     ],
