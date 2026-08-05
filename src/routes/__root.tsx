@@ -71,7 +71,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const siteUrl = "https://nezer-bday.vercel.app";
+const siteUrl = "https://hbd-nezer.vercel.app";
 const title = "Letters to Nezer";
 const description = "Leave Nezer something you've always wanted to say. Completely anonymous, no name, no email, no login. Just your words, for one day only.";
 const image = `${siteUrl}/og-image.png`;

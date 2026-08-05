@@ -5,7 +5,7 @@ import { LetterModal } from "@/components/letter-modal";
 import { Particles } from "@/components/particles";
 
 const PhotoSphere = lazy(() => import("@/components/photo-sphere"));
-const siteUrl = "https://nezer-bday.vercel.app";
+const siteUrl = "https://hbd-nezer.vercel.app";
 const title = "Letters to Nezer";
 const description = "Leave Nezer something you've always wanted to say. Completely anonymous.";
 const image = `${siteUrl}/og-image.png`;

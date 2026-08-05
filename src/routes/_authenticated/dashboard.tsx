@@ -26,7 +26,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { LetterViewModal, type LetterRow } from "@/components/letter-view-modal";
 
-const siteUrl = "https://nezer-bday.vercel.app";
+const siteUrl = "https://hbd-nezer.vercel.app";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: Dashboard,
