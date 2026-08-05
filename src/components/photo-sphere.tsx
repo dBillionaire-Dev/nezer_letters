@@ -9,8 +9,9 @@ import image3 from "@/assets/image-3.png";
 import image4 from "@/assets/image-4.png";
 import image5 from "@/assets/image-5.png";
 import image6 from "@/assets/image-6.png";
+import image7 from "@/assets/image-7.png";
 
-const IMAGES = [image1, image2, image3, image4, image5, image6];
+const IMAGES = [image1, image2, image3, image4, image5, image6, image7];
 
 const RADIUS = 2.35;
 const TILE_COUNT = 32;
