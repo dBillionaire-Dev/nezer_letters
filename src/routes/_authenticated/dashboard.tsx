@@ -39,7 +39,7 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
     ],
     links: [
       { rel: "canonical", href: "/dashboard" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", href: "/favicon.ico" },
     ],
   }),
 });

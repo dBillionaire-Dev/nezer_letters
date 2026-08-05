@@ -28,12 +28,11 @@ export const Route = createFileRoute("/")({
     links: [
       {
         rel: "canonical",
-        href: "/"
+        href: "/",
       },
       {
         rel: "icon",
-        type: "image/png",
-        href: "/favicon.png",
+        href: "/favicon.ico",
       },
     ],
     scripts: [

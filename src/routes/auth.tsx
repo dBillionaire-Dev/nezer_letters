@@ -19,7 +19,7 @@ export const Route = createFileRoute("/auth")({
     ],
     links: [
       { rel: "canonical", href: "/auth" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", href: "/favicon.ico" },
     ],
   }),
 });
