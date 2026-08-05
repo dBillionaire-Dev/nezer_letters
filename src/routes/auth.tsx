@@ -17,7 +17,10 @@ export const Route = createFileRoute("/auth")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/auth" },
     ],
-    links: [{ rel: "canonical", href: "/auth" }],
+    links: [
+      { rel: "canonical", href: "/auth" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+    ],
   }),
 });
 
@@ -25,7 +28,6 @@ function AuthPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,21 +41,6 @@ function AuthPage() {
     event.preventDefault();
     setLoading(true);
     setError(null);
-
-    if (mode === "signup") {
-      const { error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: { emailRedirectTo: `${window.location.origin}/auth` },
-      });
-      setLoading(false);
-      if (signUpError) {
-        setError(signUpError.message);
-        return;
-      }
-      navigate({ to: "/dashboard", replace: true });
-      return;
-    }
 
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
@@ -120,20 +107,7 @@ function AuthPage() {
           className="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
         >
           {loading ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
-          {mode === "signin" ? "Sign in" : "Create owner account"}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            setMode(mode === "signin" ? "signup" : "signin");
-            setError(null);
-          }}
-          className="mt-4 w-full text-center text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-        >
-          {mode === "signin"
-            ? "First time? Create the owner account"
-            : "Already set up? Sign in instead"}
+          Sign in
         </button>
       </motion.form>
     </main>

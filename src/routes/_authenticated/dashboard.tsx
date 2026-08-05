@@ -37,7 +37,10 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/dashboard" },
     ],
-    links: [{ rel: "canonical", href: "/dashboard" }],
+    links: [
+      { rel: "canonical", href: "/dashboard" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+    ],
   }),
 });
 
