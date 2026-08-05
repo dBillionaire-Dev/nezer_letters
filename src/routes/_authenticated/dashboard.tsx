@@ -24,12 +24,13 @@ import {
 } from "@/lib/letters.functions";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { LetterViewModal, type LetterRow } from "@/components/letter-view-modal";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: Dashboard,
   head: () => ({
     meta: [
-      { title: "Letters dashboard — Letters to Nezer" },
+      { title: "Letters dashboard - Letters to Nezer" },
       { name: "description", content: "Private dashboard for reading anonymous letters." },
       { name: "robots", content: "noindex" },
       { property: "og:title", content: "Letters dashboard" },
@@ -37,10 +38,7 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/dashboard" },
     ],
-    links: [
-      { rel: "canonical", href: "/dashboard" },
-      { rel: "icon", href: "/favicon.ico" },
-    ],
+    links: [{ rel: "canonical", href: "/dashboard" }],
   }),
 });
 
@@ -88,6 +86,7 @@ function Dashboard() {
   const [filter, setFilter] = useState<Filter>("all");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [selectedLetter, setSelectedLetter] = useState<LetterRow | null>(null);
 
   const stats = useQuery({
     queryKey: ["letter-stats"],
@@ -113,6 +112,15 @@ function Dashboard() {
     mutationFn: (input: { id: string; deleted: boolean }) => toggleDeleted({ data: input }),
     onSuccess: invalidate,
   });
+
+  function openLetter(letter: LetterRow) {
+    if (!letter.is_read) {
+      setSelectedLetter({ ...letter, is_read: true });
+      readMutation.mutate({ id: letter.id, isRead: true });
+    } else {
+      setSelectedLetter(letter);
+    }
+  }
 
   async function signOut() {
     await queryClient.cancelQueries();
@@ -226,7 +234,16 @@ function Dashboard() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.22 }}
-                    className="glass rounded-2xl p-5 transition-colors hover:border-primary/30"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openLetter(letter)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        openLetter(letter);
+                      }
+                    }}
+                    className="glass cursor-pointer rounded-2xl p-5 text-left transition-colors hover:border-primary/30"
                   >
                     <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                       <time dateTime={letter.created_at}>
@@ -249,16 +266,17 @@ function Dashboard() {
                       ) : null}
                     </div>
 
-                    <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-foreground">
+                    <p className="mt-3 line-clamp-3 whitespace-pre-wrap text-sm leading-relaxed text-foreground">
                       {letter.message}
                     </p>
 
                     <div className="mt-4 flex flex-wrap gap-2">
                       <button
                         type="button"
-                        onClick={() =>
-                          readMutation.mutate({ id: letter.id, isRead: !letter.is_read })
-                        }
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          readMutation.mutate({ id: letter.id, isRead: !letter.is_read });
+                        }}
                         className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-xs transition hover:bg-secondary"
                       >
                         {letter.is_read ? (
@@ -270,9 +288,10 @@ function Dashboard() {
                       </button>
                       <button
                         type="button"
-                        onClick={() =>
-                          deleteMutation.mutate({ id: letter.id, deleted: !letter.deleted })
-                        }
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          deleteMutation.mutate({ id: letter.id, deleted: !letter.deleted });
+                        }}
                         className={cn(
                           "inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-xs transition hover:bg-secondary",
                           !letter.deleted && "text-destructive",
@@ -319,6 +338,25 @@ function Dashboard() {
           </nav>
         ) : null}
       </div>
+
+      <LetterViewModal
+        letter={selectedLetter}
+        onOpenChange={(open) => {
+          if (!open) setSelectedLetter(null);
+        }}
+        onToggleRead={(input) => {
+          readMutation.mutate(input);
+          setSelectedLetter((current) =>
+            current && current.id === input.id ? { ...current, is_read: input.isRead } : current,
+          );
+        }}
+        onToggleDeleted={(input) => {
+          deleteMutation.mutate(input);
+          setSelectedLetter((current) =>
+            current && current.id === input.id ? { ...current, deleted: input.deleted } : current,
+          );
+        }}
+      />
     </main>
   );
 }

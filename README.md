@@ -75,8 +75,8 @@ sphere. Any count works.
 
 ## Deployment
 
-The app is deployed from the Lovable editor with **Publish**; the backend (database, auth)
-is already provisioned and its environment variables are injected automatically:
+The app is deployed on **Vercel**; the backend (database, auth)
+is already provisioned by **Supabase** and its environment variables are injected:
 
 - `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` — browser
 - `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` — server functions
