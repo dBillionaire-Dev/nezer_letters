@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: title },
       { property: "og:locale", content: "en_NG" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: image },
+      { property: "og:image", content: `${siteUrl}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: title },
@@ -105,6 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: image },
     ],
     links: [
+      { rel: "canonical", href: siteUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

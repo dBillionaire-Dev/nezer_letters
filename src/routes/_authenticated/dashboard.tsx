@@ -26,6 +26,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { LetterViewModal, type LetterRow } from "@/components/letter-view-modal";
 
+const siteUrl = "https://nezer-bday.vercel.app";
+
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: Dashboard,
   head: () => ({
@@ -33,12 +35,8 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { title: "Letters dashboard - Letters to Nezer" },
       { name: "description", content: "Private dashboard for reading anonymous letters." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Letters dashboard" },
-      { property: "og:description", content: "Private dashboard for reading anonymous letters." },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/dashboard" },
     ],
-    links: [{ rel: "canonical", href: "/dashboard" }],
+    links: [{ rel: "canonical", href: `${siteUrl}/dashboard` }],
   }),
 });
 
