@@ -25,7 +25,16 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      {
+        rel: "canonical",
+        href: "/"
+      },
+      {
+        rel: "icon",
+        href: "/favicon.png",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -60,9 +69,9 @@ function Home() {
   return (
     <main className="relative min-h-dvh overflow-hidden">
       <div aria-hidden className="aurora pointer-events-none absolute inset-0 opacity-70" />
-      <Particles />
+      {/*<Particles />*/}
 
-      <div className="relative mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-10 px-5 py-16 text-center sm:py-24">
+      <div className="relative mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-10 px-5 md-10 sm:py-24 text-center">
         <motion.h1
           initial="hidden"
           animate="show"
