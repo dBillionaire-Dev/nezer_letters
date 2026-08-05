@@ -7,7 +7,7 @@ import { Particles } from "@/components/particles";
 const PhotoSphere = lazy(() => import("@/components/photo-sphere"));
 const siteUrl = "https://nezer-bday.vercel.app";
 const title = "Letters to Nezer";
-const description = "Leave Nezer something you've always wanted to say. Completely anonymous, no name, no email, no login. Just your words, for one day only.";
+const description = "Leave Nezer something you've always wanted to say. Completely anonymous.";
 const image = `${siteUrl}/og-image.png`;
 
 export const Route = createFileRoute("/")({
