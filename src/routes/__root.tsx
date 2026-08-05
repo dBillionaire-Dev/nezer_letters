@@ -71,20 +71,38 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const siteUrl = "https://nezer-bday.vercel.app";
+const title = "Letters to Nezer";
+const description = "Leave me something you've always wanted to say.";
+const image = `${siteUrl}/og-image.png`;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    title,
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Letters to Nezer" },
-      { name: "description", content: "Leave me something you've always wanted to say." },
-      { property: "og:site_name", content: "Letters to Nezer" },
+
+      // SEO
+      { name: "description", content: description },
+
+      // Open Graph
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: siteUrl },
+      { property: "og:site_name", content: title },
+      { property: "og:locale", content: "en_NG" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://nezer-bday.vercel.app/og-image.png" },
+      { property: "og:image", content: image },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: title },
+
+      // Twitter
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://nezer-bday.vercel.app/og-image.png" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: image },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
