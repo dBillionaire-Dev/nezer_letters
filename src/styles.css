@@ -4,10 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Letters to Nezer — luxury dark design system.
- * All colors are oklch semantic tokens. Never hardcode colors in components.
- */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

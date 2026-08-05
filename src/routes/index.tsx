@@ -1,8 +1,6 @@
 import { Suspense, lazy, useState } from "react";
 import { createFileRoute, ClientOnly } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-
 import { LetterModal } from "@/components/letter-modal";
 import { Particles } from "@/components/particles";
 
@@ -12,11 +10,11 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Letters to Nezer — Send an anonymous birthday letter" },
+      { title: "Letters to Nezer - Send an anonymous birthday letter" },
       {
         name: "description",
         content:
-          "Leave Nezer something you've always wanted to say. Completely anonymous — no name, no email, no login. Just your words, for one day only.",
+          "Leave Nezer something you've always wanted to say. Completely anonymous, no name, no email, no login. Just your words, for one day only.",
       },
       { property: "og:title", content: "Letters to Nezer" },
       {
@@ -65,16 +63,15 @@ function Home() {
       <Particles />
 
       <div className="relative mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-10 px-5 py-16 text-center sm:py-24">
-        <motion.p
+        <motion.h1
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          transition={{ duration: 0.6 }}
-          className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl"
         >
-          <Sparkles className="size-3.5 text-primary" aria-hidden />
-          Letters to Nezer
-        </motion.p>
+          <span className="text-gradient">Happy Birthday To Me</span>
+        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
@@ -89,16 +86,6 @@ function Home() {
           </ClientOnly>
         </motion.div>
 
-        <motion.h1
-          initial="hidden"
-          animate="show"
-          variants={fadeUp}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl"
-        >
-          <span className="text-gradient">Happy Birthday To Me</span>
-        </motion.h1>
-
         <motion.p
           initial="hidden"
           animate="show"
@@ -106,8 +93,8 @@ function Home() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="max-w-xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Today I'm celebrating another year of growth. If you've ever wanted to tell me something —
-          a compliment, a confession, a criticism, or a thank you — today is the day.
+          Today I'm celebrating another year of growth. If you've ever wanted to tell me something,
+          a compliment, a confession, a criticism, or a thank you, today is the day.
         </motion.p>
 
         <motion.div
@@ -125,7 +112,7 @@ function Home() {
             Leave Me An Anonymous Letter
           </button>
           <p className="text-xs text-muted-foreground">
-            No name. No email. No login. Only your message is stored.
+            No name. No email. No login. Only your message is received.
           </p>
         </motion.div>
       </div>

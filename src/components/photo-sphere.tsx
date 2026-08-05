@@ -3,16 +3,14 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
-import sphere1 from "@/assets/sphere-1.jpg";
-import sphere2 from "@/assets/sphere-2.jpg";
-import sphere3 from "@/assets/sphere-3.jpg";
-import sphere4 from "@/assets/sphere-4.jpg";
+import image1 from "@/assets/image-1.png";
+import image2 from "@/assets/image-2.png";
+import image3 from "@/assets/image-3.png";
+import image4 from "@/assets/image-4.png";
+import image5 from "@/assets/image-5.png";
+import image6 from "@/assets/image-6.png";
 
-/**
- * Swap these imports for your own photos (square crops look best).
- * Any number of images works — tiles are distributed evenly over the sphere.
- */
-const IMAGES = [sphere1, sphere2, sphere3, sphere4];
+const IMAGES = [image1, image2, image3, image4, image5, image6];
 
 const RADIUS = 2.35;
 const TILE_COUNT = 32;

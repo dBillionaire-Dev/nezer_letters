@@ -9,10 +9,10 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
   head: () => ({
     meta: [
-      { title: "Private access — Letters to Nezer" },
+      { title: "Private access - Letters to Nezer" },
       { name: "description", content: "Private sign-in for the Letters to Nezer dashboard." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Private access — Letters to Nezer" },
+      { property: "og:title", content: "Private access - Letters to Nezer" },
       { property: "og:description", content: "Private sign-in for the Letters to Nezer dashboard." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/auth" },

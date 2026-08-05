@@ -110,7 +110,7 @@ export function LetterModal({ open, onOpenChange }: { open: boolean; onOpenChang
                     </motion.span>
                     <Dialog.Title className="font-display text-3xl">Thank you.</Dialog.Title>
                     <p className="max-w-sm text-sm text-muted-foreground">
-                      Your anonymous message has reached me. No name, no trace — just your words.
+                      Your anonymous message has reached me. No name, no trace, just your words.
                     </p>
                     <div className="mt-2 flex flex-wrap justify-center gap-3">
                       <button
