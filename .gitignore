@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules/
+node_modules
 .env
 dist
 dist-ssr
@@ -23,7 +23,7 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
-.lovable/
+.lovable
 !.vscode/extensions.json
 .idea
 .DS_Store

@@ -4,7 +4,7 @@
 
 A one-day, completely anonymous letter box built as a birthday project. Visitors land on a
 cinematic dark page with a rotating 3D photo sphere, write one message, and send it. Nothing
-else is ever collected — no name, email, phone, username, login, social handle, or location.
+else is ever collected, no name, email, phone, username, login, social handle, or location.
 
 ## Stack
 
@@ -16,10 +16,10 @@ else is ever collected — no name, email, phone, username, login, social handle
 | 3D         | React Three Fiber + Drei + three.js |
 | Motion     | Framer Motion + canvas-confetti |
 | Forms      | React Hook Form + Zod |
-| Backend    | Lovable Cloud (PostgreSQL, Auth, Row Level Security) |
+| Backend    | Supabase (PostgreSQL, Auth, Row Level Security) |
 | Icons      | Lucide |
 
-> The brief asked for Next.js App Router. This project runs on TanStack Start, which is the
+> This project runs on TanStack Start, which is the
 > framework used here; every requested capability (server-side logic, SSR, file routing,
 > API routes) is implemented with its equivalents.
 
